@@ -1,6 +1,7 @@
 from PyPDF2 import PdfReader
 from gtts import gTTS
 import argparse
+import os
 
 
 def main():
@@ -18,7 +19,7 @@ def main():
 
     if content:
         tts = gTTS(content, lang=args.language or 'en')
-        tts.save(args.output or f'{args.file}-audiobook.mp3')
+        tts.save(args.output or f'{os.path.splitext(args.file)[0]}-audiobook.mp3')
     else:
         print('PDF is empty.')
 
